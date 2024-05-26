@@ -1,8 +1,10 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode } from "react";
-import { WagmiProvider } from "wagmi";
+import { WagmiProvider } from "@privy-io/wagmi";
+import { PrivyProvider } from "@privy-io/react-auth";
 import { config } from "@/config";
+import { ReactQueryInitializer } from "./ReactQueryInitializer";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -40,8 +42,10 @@ export const Providers = ({ children }: { children: ReactNode }) => {
   const queryClient = getQueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <WagmiProvider config={config}>{children}</WagmiProvider>
-    </QueryClientProvider>
+    <PrivyProvider appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}>
+      <QueryClientProvider client={queryClient}>
+        <WagmiProvider config={config}>{children}</WagmiProvider>
+      </QueryClientProvider>
+    </PrivyProvider>
   );
 };

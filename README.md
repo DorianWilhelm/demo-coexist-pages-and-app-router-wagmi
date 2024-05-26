@@ -21,7 +21,17 @@ Goal is to find an incremental migration path for an existing Next.js ^13.x proj
 
 Following the Getting Started Guide from [wagmi](https://wagmi.sh/react/getting-started) results in `Error: No QueryClient set, use QueryClientProvider to set one`.
 
-## hacky fix
+## Branches
+
+## Motivation
+
+Goal is to find an incremental migration path for an existing Next.js ^13.x project with  [https://wagmi.sh/](Wagmi v2) from `pages router` to the `app router`.
+
+## Problem
+
+Following the Getting Started Guide from [wagmi](https://wagmi.sh/react/getting-started) and Advanced Server Rendering Guide from [tanstack query v5](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr#advanced-server-rendering) results in the pages in the pages router to throw with `Error: No QueryClient set, use QueryClientProvider to set one`.
+
+## Current solution
 
 Call getServerSideProps in the pages router pages that use wagmi hooks to skip prerendering.
 

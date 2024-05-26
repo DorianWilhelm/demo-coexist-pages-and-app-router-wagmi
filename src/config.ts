@@ -1,4 +1,5 @@
-import { http, createConfig, createStorage, cookieStorage } from "wagmi";
+import { createConfig } from "@privy-io/wagmi";
+import { http } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
 import { injected } from "wagmi/connectors";
 
