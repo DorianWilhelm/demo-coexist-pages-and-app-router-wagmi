@@ -1,40 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Next.js ^13.x coexisting pages **and** app router with Wagmi & Tanstack Query v5
 
-First, run the development server:
+Builds with `Error: No QueryClient set, use QueryClientProvider to set one` when trying to prerendering pages that use  [https://wagmi.sh/](Wagmi) hooks.
 
 ```bash
-npm run dev
+npm run build
 # or
-yarn dev
+yarn build
 # or
-pnpm dev
+pnpm build
 # or
-bun dev
+bun build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Motivation
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Goal is to find an incremental migration path for an existing Next.js ^13.x project with  [https://wagmi.sh/](Wagmi) from `pages router` to the `app router`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Problem
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Following the Getting Started Guide from [wagmi](https://wagmi.sh/react/getting-started) results in `Error: No QueryClient set, use QueryClientProvider to set one`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## hacky fix
 
-## Learn More
+Call getServerSideProps in the pages router pages that use wagmi hooks to skip prerendering.
 
-To learn more about Next.js, take a look at the following resources:
+## Branches
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- feat/privy: Demoes adding privy to the repository.

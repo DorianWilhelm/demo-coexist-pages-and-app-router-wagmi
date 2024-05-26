@@ -1,11 +1,13 @@
 "use client";
 import { ConnectWallet } from "@/components/ConnectWallet";
-import { QueryTestComponent } from "@/components/QueryTestComponent";
+
+export async function getServerSideProps() {
+  return { props: {} };
+}
 
 export default function Page() {
   return (
     <div>
-      <QueryTestComponent />
       <ConnectWallet />
     </div>
   );

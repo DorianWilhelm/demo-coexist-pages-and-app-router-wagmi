@@ -40,8 +40,8 @@ export const Providers = ({ children }: { children: ReactNode }) => {
   const queryClient = getQueryClient();
 
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </WagmiProvider>
+    <QueryClientProvider client={queryClient}>
+      <WagmiProvider config={config}>{children}</WagmiProvider>
+    </QueryClientProvider>
   );
 };
